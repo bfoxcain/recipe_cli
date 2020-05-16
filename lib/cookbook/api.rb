@@ -1,6 +1,12 @@
+
 class Api
-    ## responsible for service file/class for talking to the api- going out to it getting info and returning it.
-
-
-
+   def self.get_recipe(ingredient)
+    url = "http://www.recipepuppy.com/api/?i=#{ingredient}"
+    response = Net::HTTP.get(URI(url))
+    recipes = JSON.parse(response)["results"]
+    recipes.each do |recipe_info|
+        Recipe.new(recipe_info["title"], recipe_info["href"])
+    end
+    binding.pry
+   end
 end

@@ -7,5 +7,6 @@ class Cli
         puts "Enter an ingredient to see recipes with that ingredient."
         puts "  "
         @ingredient = gets.strip.downcase
+        Api.get_recipe(@ingredient)
     end
 end
