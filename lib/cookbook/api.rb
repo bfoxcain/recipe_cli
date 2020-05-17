@@ -1,7 +1,6 @@
-
 class Api
-    attr_accessor :recipe_site
-   def self.get_recipe(ingredient)
+
+    def self.get_recipe(ingredient)
     url = "http://www.recipepuppy.com/api/?i=#{ingredient}"
     response = Net::HTTP.get(URI(url))
     recipes = JSON.parse(response)["results"]
@@ -12,7 +11,7 @@ class Api
     end
 
     def self.getRecipeDetails(recipe)
-        url = "#{recipe.recipe_site}"
+        url = "http://www.recipepuppy.com/api/?q=#{recipe.href}"
         response = Net::HTTP.get(URI(url))
         binding.pry
    end

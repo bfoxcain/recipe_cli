@@ -1,11 +1,11 @@
 class Recipe
 ##responsible for making recipes.
-attr_accessor :name, :ingredient, :recipe_site
+attr_accessor :name, :ingredient, :href
 @@all = []
-    def initialize(title, href, ingredient)
+    def initialize(title, href, ingredients)
         @name = title
-        @recipe_site = href
-        @ingredient = ingredient
+        @href = href
+        @ingredient = ingredients
 
         @@all << self
     end
