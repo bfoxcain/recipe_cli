@@ -12,11 +12,13 @@ class Cli
         prompt_user
         inputs = gets.strip.downcase
         while inputs != "exit"
+            binding.pry
             if inputs == "list"
                 recipes = Recipe.select_by_ingredient(@ingredient)
                 print_recipes(recipes)
+                
             elsif inputs.to_i > 0 && inputs.to_i < recipes.length
-                recipe = Recipe[inputs.to_i - 1]
+                recipe = recipes[inputs.to_i - 1]
                 Api.getRecipeDetails(recipe)
             #elsif
             else
@@ -40,7 +42,7 @@ class Cli
 
     def prompt_user
         puts "  "
-        puts "Select a number to see the site for the recipe: type 'list' to see the list again, 'ingredeient' to select a new ingrdient, or 'exit' to exit."
+        puts "Select a number to see the site for the recipe: type 'list' to see the list again, 'ingredient' to select a new ingredient, or 'exit' to exit."
         puts "  "
     end
 end

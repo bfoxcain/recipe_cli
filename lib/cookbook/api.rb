@@ -12,6 +12,6 @@ class Api
     def self.getRecipeDetails(recipe)
         url = "http://www.recipepuppy.com/api/?i=#{recipe.recipe_site}"
         response = Net::HTTP.get(URI(url))
-        binding.pry
+        
    end
 end
