@@ -12,14 +12,16 @@ class Cli
         prompt_user
         inputs = gets.strip.downcase
         while inputs != "exit"
-            binding.pry
+            
+            recipes = Recipe.select_by_ingredient(@ingredient)
             if inputs == "list"
-                recipes = Recipe.select_by_ingredient(@ingredient)
+                
                 print_recipes(recipes)
                 
             elsif inputs.to_i > 0 && inputs.to_i < recipes.length
                 recipe = recipes[inputs.to_i - 1]
                 Api.getRecipeDetails(recipe)
+                
             #elsif
             else
                 puts "I do not understand, please try again."
