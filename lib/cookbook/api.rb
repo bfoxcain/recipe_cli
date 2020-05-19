@@ -11,8 +11,12 @@ class Api
     end
 
     def self.getRecipeDetails(recipe)
-        url = "http://www.recipepuppy.com/api/?q=#{recipe.href}"
-        response = Net::HTTP.get(URI(url))
         binding.pry
+        url = "http://www.recipepuppy.com/api/?q=#{recipes.href}"
+        response = Net::HTTP.get(URI(url))
+        recipes = JSON.parse(response)["results"]
+        
+        
+        
    end
 end
