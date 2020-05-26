@@ -2,6 +2,9 @@
 require "httparty"
 require "json"
 require "pry"
+require "dotenv"
+Dotenv.load
+
 
 require_relative "./cookbook/cli"
 require_relative "./cookbook/api"
